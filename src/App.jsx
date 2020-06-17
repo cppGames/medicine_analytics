@@ -18,10 +18,10 @@ const App = () => {
 
   return(
     <Grid container direction='column' align='center' justify='center' spacing={2} className={classes.root}>
-      <Grid item xs={9}>
+      <Grid item xs={12}>
         <Main />
       </Grid>
-      <Grid item xs={9}>
+      <Grid item xs={12}>
         <Type />
       </Grid>
     </Grid>
