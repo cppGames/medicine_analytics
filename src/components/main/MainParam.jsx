@@ -12,9 +12,9 @@ import {
 } from '@material-ui/core'
 
 import {
-  makeStyles,
-  useTheme
+  makeStyles
 } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -27,15 +27,6 @@ const MenuProps = {
   },
 };
 
-const getStyles = (name, personName, theme) => {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
-
 const useStyles = makeStyles((theme) => ({
   formControl: {
     // margin: theme.spacing(1),
@@ -43,41 +34,43 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const names = [
-  'Oliver Hansen',
-  'Van Henry'
-]
-
-const MainParam = () => {
-  const [personName, setPersonName] = useState('')
-  
-  const theme = useTheme()
-  const classes = useStyles()
-
+const MainParam = (props) => {
+ 
   const handleChange = (event) => {
-    setPersonName(event.target.value);
+    props.callbackSelect(event.target.value)
   }
 
   return (
     // <FormControl className={classes.formControl}>
     <FormControl fullWidth>
-      <InputLabel id="demo-simple-select-label">Name</InputLabel>
+      <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        value={personName}
+        value={props.value}
         onChange={handleChange}
-        input={<Input />}
+        // input={<Input />}
         MenuProps={MenuProps}
       >
-          {names.map((name) => (
-            <MenuItem key={name} value={name} style={getStyles(name, personName, theme)}>
-              {name}
+          {props.items.map((item) => (
+            <MenuItem key={item} value={item}>
+              {item}
             </MenuItem>
           ))}
       </Select>
     </FormControl>
   )
 }
+
+MainParam.propTypes = {
+  value: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
+  callbackSelect: PropTypes.func.isRequired
+};
+
+MainParam.defaultProps = {
+  items: []
+};
 
 export default MainParam

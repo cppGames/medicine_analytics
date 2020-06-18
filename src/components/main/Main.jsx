@@ -1,56 +1,78 @@
 import React, { useState, useEffect } from 'react'
 import {
   Grid,
-  Card, 
+  Card,
+  Button,
   CardContent,
   Typography 
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+
+import {
+  makeStyles,
+  useTheme
+} from '@material-ui/core/styles';
+
 import MainParam from './MainParam'
+import { get_data } from '../../util/data'
 
 
 const useStyles = makeStyles(theme => ({
   root: {
-    minWidth: 275,
+    minWidth: 275
   },
-  background: {
-    'background-color': 'red'
+  title: {
+
   }
 }))
 
 const Main = () => {
+  const theme = useTheme()
   const classes = useStyles()
+
+  const [rowData, setRowdata] = useState({})
+  useEffect(() => {
+    setRowdata(get_data())
+  }, []);
+
+  const [param1, setParam1] = useState('')
+  const [param2, setParam2] = useState('')
+  const [param3, setParam3] = useState('')
+
+  const handleClick = (event) => {
+    alert(`send params to backend  param1: ${param1}, param2: ${param2}, param3: ${param3}` )
+  }
+
   return (
     <Card className={classes.root}>
         <CardContent>
-          <Typography align='left' variant='h3' component='h2'>
-            Карточка пациента
-          </Typography>
-          <Typography align='left' variant='subtitle1'>
-            Эффективность лечения зависит отследующих параметров
-          </Typography>
           <Grid container direction='column'>
-            <Grid container item direction='row' spacing={2}> 
+            <Grid item>
+              <Typography align='left' variant='h3' component='h2'>
+                Карточка пациента
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography align='left' variant='subtitle1'>
+                Эффективность лечения зависит отследующих параметров
+              </Typography>
+            </Grid>
+            <Grid item container direction='row' spacing={2}> 
               <Grid item xs={6}>
                 <Typography align='left' variant='h5'>
                   Признаки #1
                 </Typography>
-                <MainParam />
-                <MainParam />
-                <MainParam />
-                <MainParam />
+                <MainParam label={'MyName'} items={rowData.param1} callbackSelect={setParam1} value={param1}/>
+                <MainParam label={'MyName 2'} items={rowData.param2} callbackSelect={setParam2} value={param2}/>
               </Grid> 
-
-              {/* #2 */}
               <Grid item xs={6}>
                 <Typography align='left' variant='h5'>
                   Признаки #1
                 </Typography>
-                <MainParam />
-                <MainParam />
-                <MainParam />
-                <MainParam />
+                <MainParam label={'MyName 3'} items={rowData.param3} callbackSelect={setParam3} value={param3}/>
               </Grid> 
+            </Grid>
+            <Grid item align='right'>
+              <Button variant='outlined' color='secondary' onClick={handleClick} >перейти к типам лечения</Button>
             </Grid>
           </Grid>
         </CardContent>
