@@ -28,7 +28,7 @@ const Main = () => {
   const [prodData, setProdData] = useState([])
   useEffect(() => {
     setProdData(get_data())
-  }, []);
+  }, [])
 
   const [multiParam, setMultiParam] = useState({})
 

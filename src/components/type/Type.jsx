@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Card,
   Grid,
@@ -8,6 +8,7 @@ import {
 
 import { makeStyles } from '@material-ui/core/styles'
 import TypeProgressBar from './TypeProgressBar'
+import { get_type } from '../../util/data'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -20,64 +21,18 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const testData = {
-  diagnostics: {
-    name: 'Диагностика',
-    probability: [
-      { bgcolor: '#778077', completed: 10 },
-      { bgcolor: '#778077', completed: 30 },
-      { bgcolor: '#778077', completed: 53 }
-    ]
-  },
-  antitumor_therapy: {
-    name: 'Лекартвенная противоопухолевая терапия',
-    probability: [
-      { bgcolor: '#778077', completed: 22 },
-      { bgcolor: '#778077', completed: 14 },
-      { bgcolor: '#778077', completed: 78 }
-    ]
-  },
-  radiation_therapy: {
-    name: 'Лучевая терапия',
-    probability: [
-      { bgcolor: '#778077', completed: 11 },
-      { bgcolor: '#778077', completed: 63 },
-      { bgcolor: '#778077', completed: 29 }
-    ]
-  },
-  nonspecific_treatment: {
-    name: 'Неспецифическое лечение',
-    probability: [
-      { bgcolor: '#778077', completed: 43 },
-      { bgcolor: '#778077', completed: 31 },
-      { bgcolor: '#778077', completed: 77 }
-    ]
-  },
-  chemoradiotherapy: {
-    name: 'Химиолучевая терапия',
-    probability: [
-      { bgcolor: '#778077', completed: 5 },
-      { bgcolor: '#778077', completed: 14 },
-      { bgcolor: '#778077', completed: 62 }
-    ]
-  },
-  surgery: {
-    name: 'Хирургическое лечение',
-    probability: [
-      { bgcolor: '#778077', completed: 10 },
-      { bgcolor: '#778077', completed: 33 },
-      { bgcolor: '#778077', completed: 51 }
-    ]
-  }
-}
-
 const Type = () => {
   const classes = useStyles()
+
+  const [types, setTypes] = useState([])
+  useEffect(() => {
+    setTypes(get_type())
+  }, [])
 
   return (
     <Grid container spacing={2}>
       {
-        Object.entries(testData).map(([key, value]) => {
+        Object.entries(types).map(([key, value]) => {
           return(
             <Grid item xs={6} key={key}>
               <Card className={classes.card}>
