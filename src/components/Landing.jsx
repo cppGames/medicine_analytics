@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   },
   mainFrame: {},
   paramFrame : {
-    background: theme.colors.blue
+    // background: theme.colors.blue
   }
 }))
 
@@ -21,7 +21,7 @@ const App = () => {
   const classes = useStyles()
 
   return(
-    <Grid container direction='column' align='center' justify='center' className={classes.root}>
+    <Grid container direction='column' align='center' justify='center' spacing={2} className={classes.root}>
       <Grid item xs={12}>
         <Main />
       </Grid>

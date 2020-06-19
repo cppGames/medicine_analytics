@@ -24,25 +24,25 @@ const testData = {
   diagnostics: {
     name: 'Диагностика',
     probability: [
-      { bgcolor: '#6a1b9a', completed: 10 },
-      { bgcolor: '#00695c', completed: 30 },
-      { bgcolor: '#ef6c00', completed: 53 }
+      { bgcolor: '#778077', completed: 10 },
+      { bgcolor: '#778077', completed: 30 },
+      { bgcolor: '#778077', completed: 53 }
     ]
   },
   antitumor_therapy: {
     name: 'Противоопухолевая терапия',
     probability: [
-      { bgcolor: '#6a1b9a', completed: 22 },
-      { bgcolor: '#00695c', completed: 14 },
-      { bgcolor: '#ef6c00', completed: 78 }
+      { bgcolor: '#778077', completed: 22 },
+      { bgcolor: '#778077', completed: 14 },
+      { bgcolor: '#778077', completed: 78 }
     ]
   },
   radiation_therapy: {
     name: 'Лучевая терапия',
     probability: [
-      { bgcolor: '#6a1b9a', completed: 11 },
-      { bgcolor: '#00695c', completed: 63 },
-      { bgcolor: '#ef6c00', completed: 29 }
+      { bgcolor: '#778077', completed: 11 },
+      { bgcolor: '#778077', completed: 63 },
+      { bgcolor: '#778077', completed: 29 }
     ]
   }
 }

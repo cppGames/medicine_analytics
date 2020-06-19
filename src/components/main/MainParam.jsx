@@ -34,25 +34,33 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const MainParam = (props) => {
+const MainParam2 = (props) => {
  
   const handleChange = (event) => {
-    props.callbackSelect(event.target.value)
+    const { name, value } = event.target;
+    props.callbackSelect(prevState => ({
+        ...prevState,
+        [props.id]: value
+    }));
+
   }
 
   return (
     // <FormControl className={classes.formControl}>
     <FormControl fullWidth>
-      <InputLabel id="demo-simple-select-label">{props.label}</InputLabel>
+      <InputLabel id="demo-simple-select-label">{props.row.name}</InputLabel>
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        value={props.value}
+        value={ props.val[props.id] || ''}
         onChange={handleChange}
         // input={<Input />}
         MenuProps={MenuProps}
       >
-          {props.items.map((item) => (
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {props.row.items.map((item) => (
             <MenuItem key={item} value={item}>
               {item}
             </MenuItem>
@@ -62,15 +70,15 @@ const MainParam = (props) => {
   )
 }
 
-MainParam.propTypes = {
-  value: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  items: PropTypes.array.isRequired,
-  callbackSelect: PropTypes.func.isRequired
+MainParam2.propTypes = {
+  id: PropTypes.string.isRequired,
+  row: PropTypes.object.isRequired,
+  callbackSelect: PropTypes.func.isRequired,
+  val: PropTypes.object.isRequired
 };
 
-MainParam.defaultProps = {
-  items: []
+MainParam2.defaultProps = {
+  row: {}
 };
 
-export default MainParam
+export default MainParam2

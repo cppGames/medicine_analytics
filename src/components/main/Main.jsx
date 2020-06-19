@@ -25,17 +25,15 @@ const useStyles = makeStyles(theme => ({
 const Main = () => {
   const classes = useStyles()
 
-  const [rowData, setRowdata] = useState({})
+  const [prodData, setProdData] = useState([])
   useEffect(() => {
-    setRowdata(get_data())
+    setProdData(get_data())
   }, []);
 
-  const [param1, setParam1] = useState('')
-  const [param2, setParam2] = useState('')
-  const [param3, setParam3] = useState('')
+  const [multiParam, setMultiParam] = useState({})
 
   const handleClick = (event) => {
-    alert(`send params to backend  param1: ${param1}, param2: ${param2}, param3: ${param3}` )
+    console.log(multiParam)
   }
 
   return (
@@ -51,22 +49,23 @@ const Main = () => {
               </Typography>
             </Grid>
             <Grid item container direction='row' spacing={2}> 
-              <Grid item xs={6}>
-                <Typography align='left' variant='h5'>
-                  Признаки #1
-                </Typography>
-                <MainParam label={'MyName'} items={rowData.param1} callbackSelect={setParam1} value={param1}/>
-                <MainParam label={'MyName 2'} items={rowData.param2} callbackSelect={setParam2} value={param2}/>
-              </Grid> 
-              <Grid item xs={6}>
-                <Typography align='left' variant='h5'>
-                  Признаки #1
-                </Typography>
-                <MainParam label={'MyName 3'} items={rowData.param3} callbackSelect={setParam3} value={param3}/>
-              </Grid> 
+              {
+                prodData.map((param, idx) => (
+                  <Grid item xs={6} key={idx}>
+                    <Typography align='left' variant='h5'>
+                      { param.name }
+                    </Typography>
+                    {
+                      param.params.map((item, idy) => (
+                        <MainParam key={idy} id={item.id} row={item} callbackSelect={setMultiParam} val={multiParam}/>
+                      ))
+                    }
+                </Grid>
+                ))
+              }
             </Grid>
             <Grid item align='right'>
-              <Button variant='outlined' color='secondary' onClick={handleClick} >перейти к типам лечения</Button>
+              <Button variant='outlined' color='default' onClick={handleClick} >перейти к типам лечения</Button>
             </Grid>
           </Grid>
         </CardContent>
