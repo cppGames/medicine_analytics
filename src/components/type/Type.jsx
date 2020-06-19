@@ -30,7 +30,7 @@ const testData = {
     ]
   },
   antitumor_therapy: {
-    name: 'Противоопухолевая терапия',
+    name: 'Лекартвенная противоопухолевая терапия',
     probability: [
       { bgcolor: '#778077', completed: 22 },
       { bgcolor: '#778077', completed: 14 },
@@ -43,6 +43,30 @@ const testData = {
       { bgcolor: '#778077', completed: 11 },
       { bgcolor: '#778077', completed: 63 },
       { bgcolor: '#778077', completed: 29 }
+    ]
+  },
+  nonspecific_treatment: {
+    name: 'Неспецифическое лечение',
+    probability: [
+      { bgcolor: '#778077', completed: 43 },
+      { bgcolor: '#778077', completed: 31 },
+      { bgcolor: '#778077', completed: 77 }
+    ]
+  },
+  chemoradiotherapy: {
+    name: 'Химиолучевая терапия',
+    probability: [
+      { bgcolor: '#778077', completed: 5 },
+      { bgcolor: '#778077', completed: 14 },
+      { bgcolor: '#778077', completed: 62 }
+    ]
+  },
+  surgery: {
+    name: 'Хирургическое лечение',
+    probability: [
+      { bgcolor: '#778077', completed: 10 },
+      { bgcolor: '#778077', completed: 33 },
+      { bgcolor: '#778077', completed: 51 }
     ]
   }
 }
