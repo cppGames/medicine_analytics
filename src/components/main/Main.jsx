@@ -7,10 +7,7 @@ import {
   Typography 
 } from '@material-ui/core'
 
-import {
-  makeStyles,
-  useTheme
-} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 import MainParam from './MainParam'
 import { get_data } from '../../util/data'
@@ -21,12 +18,11 @@ const useStyles = makeStyles(theme => ({
     minWidth: 275
   },
   title: {
-
+    paddingBottom: theme.spacing(2)
   }
 }))
 
 const Main = () => {
-  const theme = useTheme()
   const classes = useStyles()
 
   const [rowData, setRowdata] = useState({})
@@ -46,12 +42,10 @@ const Main = () => {
     <Card className={classes.root}>
         <CardContent>
           <Grid container direction='column'>
-            <Grid item>
+            <Grid item className={classes.title}>
               <Typography align='left' variant='h3' component='h2'>
                 Карточка пациента
               </Typography>
-            </Grid>
-            <Grid item>
               <Typography align='left' variant='subtitle1'>
                 Эффективность лечения зависит отследующих параметров
               </Typography>
