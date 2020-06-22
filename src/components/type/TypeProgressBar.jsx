@@ -14,7 +14,8 @@ const useStyles = makeStyles(theme => ({
     width: `${props.completed}%`,
     backgroundColor: props.bgcolor,
     borderRadius: 'inherit',
-    float: 'left'
+    float: 'left',
+    transition: 'width 1s ease-in-out',
   }),
   percentStyles: {
     padding: 8,

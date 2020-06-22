@@ -109,54 +109,59 @@ export function get_data() {
   ]
 }
 
+function getRandomCompleted(min=1, max=100) {
+  return Math.round(Math.random() * (max - min) + min)
+}
+
 export function get_type() {
+  console.log('hehehe')
   return {
     diagnostics: {
       name: 'Диагностика',
       probability: [
-        { bgcolor: '#778077', completed: 10, status: 'good' },
-        { bgcolor: '#778077', completed: 30, status: 'normal' },
-        { bgcolor: '#778077', completed: 53, status: 'bad' }
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'good' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'normal' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'bad' }
       ]
     },
     antitumor_therapy: {
       name: 'Лекартвенная противоопухолевая терапия',
       probability: [
-        { bgcolor: '#778077', completed: 22, status: 'good' },
-        { bgcolor: '#778077', completed: 14, status: 'normal' },
-        { bgcolor: '#778077', completed: 78, status: 'bad' }
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'good' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'normal' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'bad' }
       ]
     },
     radiation_therapy: {
       name: 'Лучевая терапия',
       probability: [
-        { bgcolor: '#778077', completed: 11, status: 'good' },
-        { bgcolor: '#778077', completed: 63, status: 'normal' },
-        { bgcolor: '#778077', completed: 29, status: 'bad' }
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'good' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'normal' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'bad' }
       ]
     },
     nonspecific_treatment: {
       name: 'Неспецифическое лечение',
       probability: [
-        { bgcolor: '#778077', completed: 43, status: 'good' },
-        { bgcolor: '#778077', completed: 31, status: 'normal' },
-        { bgcolor: '#778077', completed: 77, status: 'bad' }
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'good' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'normal' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'bad' }
       ]
     },
     chemoradiotherapy: {
       name: 'Химиолучевая терапия',
       probability: [
-        { bgcolor: '#778077', completed: 5, status: 'good' },
-        { bgcolor: '#778077', completed: 14, status: 'normal' },
-        { bgcolor: '#778077', completed: 62, status: 'bad' }
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'good' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'normal' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'bad' }
       ]
     },
     surgery: {
       name: 'Хирургическое лечение',
       probability: [
-        { bgcolor: '#778077', completed: 10, status: 'good' },
-        { bgcolor: '#778077', completed: 33, status: 'normal' },
-        { bgcolor: '#778077', completed: 51, status: 'bad' }
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'good' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'normal' },
+        { bgcolor: '#778077', completed: getRandomCompleted(), status: 'bad' }
       ]
     }
   }
