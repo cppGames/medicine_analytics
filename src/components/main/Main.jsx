@@ -4,7 +4,8 @@ import {
   Card,
   Button,
   CardContent,
-  Typography 
+  Typography,
+  CircularProgress 
 } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -19,7 +20,18 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     paddingBottom: theme.spacing(2)
-  }
+  },
+  wrapper: {
+    position: 'relative',
+  },
+  buttonProgress: {
+    color: theme.colors.blue,
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    marginTop: -12,
+    marginLeft: -12,
+  },
 }))
 
 const Main = () => {
@@ -31,9 +43,15 @@ const Main = () => {
   }, [])
 
   const [multiParam, setMultiParam] = useState({})
+  const [loading, setLoading] = useState(false)
+  const timer = React.useRef();
 
   const handleClick = (event) => {
     console.log(multiParam)
+    setLoading(true)
+    timer.current = setTimeout(() => {
+      setLoading(false)
+    }, 2000)
   }
 
   return (
@@ -65,7 +83,19 @@ const Main = () => {
               }
             </Grid>
             <Grid item align='right'>
-              <Button variant='outlined' color='default' onClick={handleClick} >перейти к типам лечения</Button>
+              
+                <Button 
+                  variant='outlined'
+                  color='default'
+                  disabled={loading}
+                  onClick={handleClick}
+                  className={classes.wrapper}
+                >
+                  Перейти к типам лечения
+                  { loading && <CircularProgress size={24} className={classes.buttonProgress} /> }
+                </Button>
+                
+              
             </Grid>
           </Grid>
         </CardContent>
