@@ -9,6 +9,7 @@ import {
 } from '@material-ui/core'
 
 import { makeStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
 
 import MainParam from './MainParam'
 import { get_data } from '../../util/data'
@@ -34,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Main = () => {
+const Main = (props) => {
   const classes = useStyles()
 
   const [prodData, setProdData] = useState([])
@@ -42,16 +43,17 @@ const Main = () => {
     setProdData(get_data())
   }, [])
 
-  const [multiParam, setMultiParam] = useState({})
+  const [filters, setFilters] = useState({})
   const [loading, setLoading] = useState(false)
   const timer = React.useRef();
 
   const handleClick = (event) => {
-    console.log(multiParam)
+    console.log(filters)
     setLoading(true)
     timer.current = setTimeout(() => {
       setLoading(false)
-    }, 2000)
+      props.setFilters(filters)
+    }, 1500)
   }
 
   return (
@@ -75,7 +77,7 @@ const Main = () => {
                     </Typography>
                     {
                       param.params.map((item, idy) => (
-                        <MainParam key={idy} id={item.id} row={item} callbackSelect={setMultiParam} val={multiParam}/>
+                        <MainParam key={idy} id={item.id} row={item} callbackSelect={setFilters} val={filters}/>
                       ))
                     }
                 </Grid>
@@ -101,6 +103,14 @@ const Main = () => {
         </CardContent>
     </Card>
   )
+}
+
+Main.propTypes = {
+  setFilters: PropTypes.func.isRequired
+}
+
+Main.defaultProps = {
+  setFilters: () => ({})
 }
 
 export default Main

@@ -18,24 +18,31 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const App = () => {
+const Landing = () => {
   const classes = useStyles()
 
+  const [filters, setFilters] = useState({})
   const [types, setTypes] = useState({})
+
   useEffect(() => {
-    setTypes(get_type())
-  }, [])
+    if (Object.keys(filters).length !== 0) {    
+      setTypes(get_type())
+    }
+  }, [filters])
 
   return(
     <Grid container direction='column' align='center' justify='center' spacing={2} className={classes.root}>
       <Grid item xs={12}>
-        <Main />
+        <Main setFilters={ setFilters }/>
       </Grid>
-      <Grid item xs={12} className={classes.paramFrame}>
-        <Type types={types}/>
-      </Grid>
+      { 
+        Object.keys(types).length !== 0 &&
+        <Grid item xs={12} className={classes.paramFrame}>
+          <Type types={types}/>
+        </Grid>
+      }
     </Grid>
   )
 }
 
-export default App
+export default Landing

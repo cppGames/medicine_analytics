@@ -62,10 +62,10 @@ const Type = (props) => {
 
 Type.propTypes = {
   types: PropTypes.object.isRequired
-};
+}
 
 Type.defaultProps = {
   types: {}
-};
+}
 
 export default Type
