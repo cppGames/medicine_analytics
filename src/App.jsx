@@ -5,6 +5,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from './theme'
 import Landing from './components/Landing'
+import Whoops from './components/whoops/Whoops'
 
 const App = () => {
   return(
@@ -12,8 +13,8 @@ const App = () => {
       <CssBaseline />
       <HashRouter>
       <Switch>
-        <Route path="/main" component={Landing} />
-        <Route component={Landing} />
+        <Route path='/main' component={Landing} />
+        <Route component={ Whoops } />
       </Switch>
     </HashRouter>
     </ThemeProvider>

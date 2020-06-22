@@ -7,6 +7,7 @@ import {
   CardContent
 } from '@material-ui/core'
 
+import { useHistory  } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import TypeProgressBar from './TypeProgressBar'
 import PropTypes from 'prop-types'
@@ -21,16 +22,18 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />
-})
-
 const Type = (props) => {
   const classes = useStyles()
+
+  let history = useHistory();
   const [checked, setChecked] = useState(false)
   useEffect(() => {
     setChecked((prev) => !prev);
   }, [])
+
+  const handleCardClick = (uri) => {
+    history.push(`/${uri}`)
+  }
 
   return (
     <Grid container spacing={2}>
@@ -39,7 +42,7 @@ const Type = (props) => {
           return(
             <Grid item xs={6} key={key}>
               <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
-                <Card className={classes.card}>
+                <Card className={classes.card} onClick={ () => handleCardClick(key) }>
                   <CardContent>
                     <Typography align='left' variant='h5' component='h4'>
                       { value.name }                  
