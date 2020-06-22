@@ -114,49 +114,49 @@ export function get_type() {
     diagnostics: {
       name: 'Диагностика',
       probability: [
-        { bgcolor: '#778077', completed: 10 },
-        { bgcolor: '#778077', completed: 30 },
-        { bgcolor: '#778077', completed: 53 }
+        { bgcolor: '#778077', completed: 10, status: 'good' },
+        { bgcolor: '#778077', completed: 30, status: 'normal' },
+        { bgcolor: '#778077', completed: 53, status: 'bad' }
       ]
     },
     antitumor_therapy: {
       name: 'Лекартвенная противоопухолевая терапия',
       probability: [
-        { bgcolor: '#778077', completed: 22 },
-        { bgcolor: '#778077', completed: 14 },
-        { bgcolor: '#778077', completed: 78 }
+        { bgcolor: '#778077', completed: 22, status: 'good' },
+        { bgcolor: '#778077', completed: 14, status: 'normal' },
+        { bgcolor: '#778077', completed: 78, status: 'bad' }
       ]
     },
     radiation_therapy: {
       name: 'Лучевая терапия',
       probability: [
-        { bgcolor: '#778077', completed: 11 },
-        { bgcolor: '#778077', completed: 63 },
-        { bgcolor: '#778077', completed: 29 }
+        { bgcolor: '#778077', completed: 11, status: 'good' },
+        { bgcolor: '#778077', completed: 63, status: 'normal' },
+        { bgcolor: '#778077', completed: 29, status: 'bad' }
       ]
     },
     nonspecific_treatment: {
       name: 'Неспецифическое лечение',
       probability: [
-        { bgcolor: '#778077', completed: 43 },
-        { bgcolor: '#778077', completed: 31 },
-        { bgcolor: '#778077', completed: 77 }
+        { bgcolor: '#778077', completed: 43, status: 'good' },
+        { bgcolor: '#778077', completed: 31, status: 'normal' },
+        { bgcolor: '#778077', completed: 77, status: 'bad' }
       ]
     },
     chemoradiotherapy: {
       name: 'Химиолучевая терапия',
       probability: [
-        { bgcolor: '#778077', completed: 5 },
-        { bgcolor: '#778077', completed: 14 },
-        { bgcolor: '#778077', completed: 62 }
+        { bgcolor: '#778077', completed: 5, status: 'good' },
+        { bgcolor: '#778077', completed: 14, status: 'normal' },
+        { bgcolor: '#778077', completed: 62, status: 'bad' }
       ]
     },
     surgery: {
       name: 'Хирургическое лечение',
       probability: [
-        { bgcolor: '#778077', completed: 10 },
-        { bgcolor: '#778077', completed: 33 },
-        { bgcolor: '#778077', completed: 51 }
+        { bgcolor: '#778077', completed: 10, status: 'good' },
+        { bgcolor: '#778077', completed: 33, status: 'normal' },
+        { bgcolor: '#778077', completed: 51, status: 'bad' }
       ]
     }
   }

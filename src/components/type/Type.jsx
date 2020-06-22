@@ -46,7 +46,7 @@ const Type = (props) => {
                     </Typography>
                     {
                       value.probability.map((item, idx) => (
-                        <TypeProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} />
+                        <TypeProgressBar key={idx} bgcolor={item.bgcolor} completed={item.completed} status={item.status} />
                       ))
                     }
                   </CardContent>
