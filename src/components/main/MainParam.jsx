@@ -13,8 +13,8 @@ import {
 
 import {
   makeStyles
-} from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+} from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;

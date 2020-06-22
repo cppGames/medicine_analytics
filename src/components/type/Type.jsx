@@ -9,7 +9,7 @@ import {
 
 import { makeStyles } from '@material-ui/core/styles'
 import TypeProgressBar from './TypeProgressBar'
-import { get_type } from '../../util/data'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -25,22 +25,17 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
 })
 
-const Type = () => {
+const Type = (props) => {
   const classes = useStyles()
   const [checked, setChecked] = useState(false)
   useEffect(() => {
     setChecked((prev) => !prev);
   }, [])
 
-  const [types, setTypes] = useState([])
-  useEffect(() => {
-    setTypes(get_type())
-  }, [])
-
   return (
     <Grid container spacing={2}>
       {
-        Object.entries(types).map(([key, value]) => {
+        Object.entries(props.types).map(([key, value]) => {
           return(
             <Grid item xs={6} key={key}>
               <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
@@ -64,5 +59,13 @@ const Type = () => {
     </Grid>
   )
 }
+
+Type.propTypes = {
+  types: PropTypes.object.isRequired
+};
+
+Type.defaultProps = {
+  types: {}
+};
 
 export default Type
