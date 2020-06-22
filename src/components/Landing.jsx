@@ -10,9 +10,11 @@ import Main from './main/main'
 
 const useStyles = makeStyles(theme => ({
   root: { 
-    padding: theme.spacing(3),
+    padding: theme.spacing(4),
   },
-  mainFrame: {},
+  mainFrame: {
+    paddingBottom: theme.spacing(2)
+  },
   paramFrame : {
     // background: theme.colors.blue
   }
@@ -31,8 +33,8 @@ const Landing = () => {
   }, [filters])
 
   return(
-    <Grid container direction='column' align='center' justify='center' spacing={2} className={classes.root}>
-      <Grid item xs={12}>
+    <Grid container direction='column' align='center' justify='center' className={classes.root}>
+      <Grid item xs={12} className={classes.mainFrame}>
         <Main setFilters={ setFilters }/>
       </Grid>
       { 
