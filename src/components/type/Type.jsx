@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 const Type = (props) => {
   const classes = useStyles()
 
-  let history = useHistory();
+  let history = useHistory()
   const [checked, setChecked] = useState(false)
   useEffect(() => {
     setChecked((prev) => !prev);

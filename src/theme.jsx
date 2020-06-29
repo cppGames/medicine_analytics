@@ -7,6 +7,9 @@ import { createMuiTheme }  from '@material-ui/core/styles'
 const theme = createMuiTheme({
   spacing: 8,
   palette: {
+    background: {
+      default: '#f2f2f2'
+    },
     primary: {
       main: '#363537',
     },
@@ -16,6 +19,7 @@ const theme = createMuiTheme({
     white: '#fff',
     blue: '#007ce0',
     navy: '#004175',
+    grey: '#778077',
   },
 })
 

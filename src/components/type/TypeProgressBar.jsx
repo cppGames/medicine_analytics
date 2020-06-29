@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const useStyles = makeStyles(theme => ({
   containerStyles: {
     height: 40,
-    backgroundColor: '#e0e0de',
+    backgroundColor: '#f2f2f2',
     margin: 20,
     position: 'relative',
   },
