@@ -10,7 +10,7 @@ Collapse
 
 const useStyles = makeStyles(theme => ({
   containerStyles: {
-    height: 80,
+    height: 50,
     // backgroundColor: '#f2f2f2',
     position: 'relative',
   },
@@ -38,13 +38,8 @@ const useStyles = makeStyles(theme => ({
     float: 'left',
     transition: 'width 1s ease-in-out',
   }),
-  percentStyles: {
-    padding: 8,
-    color: 'white',
-    fontSize: 18,
-  },
   testPercentStyles: {
-    height: 20,
+    height: 6,
     
   },
   labelStyles: {

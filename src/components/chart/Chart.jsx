@@ -16,6 +16,8 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     cursor: 'pointer',
+    background: 'transparent',
+      boxShadow: '6px 6px 14px 0 rgba(0, 0, 0, 0.2), -8px -8px 18px 0 rgba(255, 255, 255, 0.55)',
     '&:hover': {
       boxShadow: '0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)'
     }
@@ -28,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     flex: '1 0 auto',
   },
   title: {
-    paddingTop: '20px'
+    paddingTop: '10px'
   },
   warningCount: {
     color: '#990F02',
@@ -91,11 +93,11 @@ const Chart = (props) => {
         item.hover = true
         return(
           <Grid item xs={12} key={idx}>
-            <Slide direction='right' in={checked} mountOnEnter unmountOnExit>
+            <Slide direction='up' in={checked} mountOnEnter unmountOnExit>
               <Card className={classes.root} onMouseEnter={null} onMouseLeave={() => {}} >
                 <CardContent className={classes.content}>
                   <Grid container direction='row' alignItems='center' spacing={2}>
-                    <Grid item xs={4} container direction='row' justify='space-between' style={{height: '113px'}}>
+                    <Grid item xs={4} container direction='row' justify='space-between' style={{height: '80px'}}>
                       <Typography 
                         component='h5'
                         variant='h5'
@@ -131,9 +133,9 @@ const Chart = (props) => {
     { 
       !state.allTypes && 
       <Grid item align='center' xs={12}> 
-        <Button 
-          onClick={handleClick}
-          className={classes.wrapper}>
+        <Button
+          color='#BFBFBF'
+          onClick={handleClick}>
             Перейти ко всем типам
         </Button>
       </Grid>

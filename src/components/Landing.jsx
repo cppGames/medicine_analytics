@@ -12,7 +12,7 @@ import Main from './main/main'
 
 const useStyles = makeStyles(theme => ({
   root: { 
-    padding: theme.spacing(4),
+    padding: theme.spacing(10),
   },
   mainFrame: {
     paddingBottom: theme.spacing(2)

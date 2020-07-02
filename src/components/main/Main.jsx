@@ -17,7 +17,9 @@ import { get_data } from '../../util/data'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    minWidth: 275
+    minWidth: 275,
+    background: 'transparent',
+    boxShadow: '6px 6px 14px 0 rgba(0, 0, 0, 0.2), -8px -8px 18px 0 rgba(255, 255, 255, 0.55)',
   },
   title: {
     paddingBottom: theme.spacing(2)
