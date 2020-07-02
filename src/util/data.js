@@ -113,8 +113,26 @@ function getRandomCompleted(min=1, max=100) {
   return Math.round(Math.random() * (max - min) + min)
 }
 
+export function get_new_type() {
+  let res = []
+  const ids = ['diagnostics', 'antitumor_therapy', 'radiation_therapy', 'nonspecific_treatment', 'chemoradiotherapy', 'surgery']
+  const names = ['Диагностика', 'Лекартвенная противоопухолевая терапия', 'Лучевая терапия', 'Неспецифическое лечение', 'Химиолучевая терапия', 'Хирургическое лечение']
+  ids.forEach((id, index) => {
+    let item = {}
+    let good = getRandomCompleted(1, 70)
+    let normal = getRandomCompleted(1, 100-good)
+    let bad = 100 - normal - good 
+    item.id = id
+    item.name = names[index]
+    item.probability = [bad, normal, good]
+    item.price = getRandomCompleted(100000, 5000000)
+    item.count = getRandomCompleted(500, 1500)
+    res.push(item)
+  })
+  return res
+}
+
 export function get_type() {
-  console.log('hehehe')
   return {
     diagnostics: {
       name: 'Диагностика',

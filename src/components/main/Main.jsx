@@ -61,7 +61,7 @@ const Main = (props) => {
         <CardContent>
           <Grid container direction='column'>
             <Grid item className={classes.title}>
-              <Typography align='left' variant='h3' component='h2'>
+              <Typography align='left' variant='h3' component='h3'>
                 Карточка пациента
               </Typography>
               <Typography align='left' variant='subtitle1'>
