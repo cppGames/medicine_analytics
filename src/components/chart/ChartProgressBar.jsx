@@ -62,7 +62,12 @@ const ChartProgressBar = (props) => {
             <b>{bad}</b>%
           </Typography>
         </Collapse>
-        <div className={classes.testPercentStyles} style={{backgroundColor: '#990F02'}}></div>
+        <div
+          className={classes.testPercentStyles}
+          style={{
+            // backgroundColor: '#990F02',
+            backgroundImage: 'linear-gradient(#d53e33, #d53e33)'
+          }}></div>
       </div>
       <div className={classes.normalFilterStyle}>
         <Collapse in={hover} collapsedHeight={28}>
@@ -70,7 +75,12 @@ const ChartProgressBar = (props) => {
             <b>{normal}</b>%
           </Typography>
         </Collapse>
-        <div className={classes.testPercentStyles} style={{backgroundColor: '#F8DE7E'}}></div>
+        <div
+          className={classes.testPercentStyles}
+          style={{
+            // backgroundColor: '#F8DE7E',
+            backgroundImage: 'linear-gradient(#fbb300, #fbb300)'
+          }}></div>
       </div>
       <div className={classes.goodFilterStyle}>
       <Collapse in={hover} collapsedHeight={28}>
@@ -78,7 +88,12 @@ const ChartProgressBar = (props) => {
             <b>{good}</b>%
           </Typography>
         </Collapse>
-        <div className={classes.testPercentStyles} style={{backgroundColor: '#008000'}}></div>
+        <div
+          className={classes.testPercentStyles}
+          style={{
+            // backgroundColor: '#008000',
+            backgroundImage: 'linear-gradient(#399953, #399953)'
+          }}></div>
       </div>
     </div>
   )
