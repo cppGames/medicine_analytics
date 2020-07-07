@@ -7,6 +7,7 @@ import {
   Typography,
   CircularProgress 
 } from '@material-ui/core'
+import axios from 'axios'
 
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
@@ -42,7 +43,16 @@ const Main = (props) => {
 
   const [prodData, setProdData] = useState([])
   useEffect(() => {
-    setProdData(get_data())
+    axios
+      .get('http://localhost:8080/v1/api/patient-card/filter-dashboard')
+      .then(response => {
+        console.log(`get dashboard filtrs`)
+        console.log(`${response.data}`)
+        setProdData(response.data)
+      })
+      .catch(error => { 
+        console.log(`failed to get error dashboard filters: ${error}`)
+      })
   }, [])
 
   const [filters, setFilters] = useState({})
