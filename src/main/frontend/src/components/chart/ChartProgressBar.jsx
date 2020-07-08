@@ -47,6 +47,9 @@ const useStyles = makeStyles(theme => ({
     padding: 8,
     position: 'absolute',
     right: '0%',
+  },
+  typographyStyle: {
+    minWidth: '45px'
   }
 }))
 
@@ -58,7 +61,12 @@ const ChartProgressBar = (props) => {
     <div className={classes.containerStyles}>
       <div className={classes.badFilterStyle}>
         <Collapse in={hover} collapsedHeight={28}>
-          <Typography variant='h4' align='center' color='textSecondary' color='textSecondary'>
+          <Typography
+            variant='h4'
+            align='center'
+            color='textSecondary'
+            className={classes.typographyStyle}
+          >
             <b>{bad}</b>%
           </Typography>
         </Collapse>
@@ -71,7 +79,12 @@ const ChartProgressBar = (props) => {
       </div>
       <div className={classes.normalFilterStyle}>
         <Collapse in={hover} collapsedHeight={28}>
-          <Typography variant='h4' align='center' color='textSecondary'>
+          <Typography
+            variant='h4'
+            align='center'
+            color='textSecondary'
+            className={classes.typographyStyle}
+          >
             <b>{normal}</b>%
           </Typography>
         </Collapse>
@@ -82,19 +95,28 @@ const ChartProgressBar = (props) => {
             backgroundImage: 'linear-gradient(#fbb300, #fbb300)'
           }}></div>
       </div>
-      <div className={classes.goodFilterStyle}>
-      <Collapse in={hover} collapsedHeight={28}>
-          <Typography variant='h4' align='center' color='textSecondary'>
-            <b>{good}</b>%
-          </Typography>
-        </Collapse>
-        <div
-          className={classes.testPercentStyles}
-          style={{
-            // backgroundColor: '#008000',
-            backgroundImage: 'linear-gradient(#399953, #399953)'
-          }}></div>
-      </div>
+      {
+        good > 0 &&
+        <div className={classes.goodFilterStyle}>
+        <Collapse in={hover} collapsedHeight={28}>
+            <Typography
+              variant='h4'
+              align='center'
+              color='textSecondary'
+              className={classes.typographyStyle}
+            >
+              <b>{good}</b>%
+            </Typography>
+          </Collapse>
+          <div
+            className={classes.testPercentStyles}
+            style={{
+              // backgroundColor: '#008000',
+              backgroundImage: 'linear-gradient(#399953, #399953)'
+            }} />
+          </div>
+      }
+
     </div>
   )
 }
