@@ -32,7 +32,7 @@ class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(PatientCardRepository repository) {
         return args -> {
-            String fileName = "src/main/resources/data_grouped.2.csv";
+            String fileName = "src/main/resources/data_grouped.csv";
             Path myPath = Paths.get(fileName);
             logger.info("Started initialize database");
             try (BufferedReader br = Files.newBufferedReader(myPath,
@@ -50,6 +50,7 @@ class LoadDatabase {
                 // Reads all CSV contents into memory (Not suitable for large CSV files)
                 // List<PatientCard> cards = csvToBean.parse();
                 csvToBean.forEach(repository::save);
+                logger.info("Finished initialize database");
             }
         };
     }
