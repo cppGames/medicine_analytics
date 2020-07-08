@@ -38,9 +38,20 @@ const useStyles = makeStyles(theme => ({
     float: 'left',
     transition: 'width 1s ease-in-out',
   }),
-  testPercentStyles: {
+  badPercentStyles: {
     height: 6,
-    
+    // backgroundColor: '#990F02',
+    backgroundImage: 'linear-gradient(#d53e33, #d53e33)'
+  },
+  normalPercentStyles: {
+    height: 6,
+    // backgroundColor: '#F8DE7E',
+    backgroundImage: 'linear-gradient(#fbb300, #fbb300)'
+  },
+  goodPercentStyles: {
+    height: 6,
+    // backgroundColor: '#008000',
+    backgroundImage: 'linear-gradient(#399953, #399953)'
   },
   labelStyles: {
     fontSize: 18,
@@ -56,67 +67,29 @@ const useStyles = makeStyles(theme => ({
 const ChartProgressBar = (props) => {
   const { bad, normal, good, hover } = props
   const classes = useStyles(props)
+  const filterStyle = [classes.badFilterStyle, classes.normalFilterStyle, classes.goodFilterStyle]
+  const percentStyles = [classes.badPercentStyles, classes.normalPercentStyles, classes.goodPercentStyles]
 
   return (
     <div className={classes.containerStyles}>
-      <div className={classes.badFilterStyle}>
-        <Collapse in={hover} collapsedHeight={28}>
-          <Typography
-            variant='h4'
-            align='center'
-            color='textSecondary'
-            className={classes.typographyStyle}
-          >
-            <b>{bad}</b>%
-          </Typography>
-        </Collapse>
-        <div
-          className={classes.testPercentStyles}
-          style={{
-            // backgroundColor: '#990F02',
-            backgroundImage: 'linear-gradient(#d53e33, #d53e33)'
-          }}></div>
-      </div>
-      <div className={classes.normalFilterStyle}>
-        <Collapse in={hover} collapsedHeight={28}>
-          <Typography
-            variant='h4'
-            align='center'
-            color='textSecondary'
-            className={classes.typographyStyle}
-          >
-            <b>{normal}</b>%
-          </Typography>
-        </Collapse>
-        <div
-          className={classes.testPercentStyles}
-          style={{
-            // backgroundColor: '#F8DE7E',
-            backgroundImage: 'linear-gradient(#fbb300, #fbb300)'
-          }}></div>
-      </div>
-      {
-        good > 0 &&
-        <div className={classes.goodFilterStyle}>
-        <Collapse in={hover} collapsedHeight={28}>
-            <Typography
-              variant='h4'
-              align='center'
-              color='textSecondary'
-              className={classes.typographyStyle}
-            >
-              <b>{good}</b>%
-            </Typography>
-          </Collapse>
-          <div
-            className={classes.testPercentStyles}
-            style={{
-              // backgroundColor: '#008000',
-              backgroundImage: 'linear-gradient(#399953, #399953)'
-            }} />
-          </div>
+      {        
+        [bad, normal, good].map((item, idx) => {
+          if(item > 0) {
+            return(
+              <div className={filterStyle[idx]} key={idx}>
+                <Typography
+                  variant='h4'
+                  align='center'
+                  color='textSecondary'
+                  className={classes.typographyStyle}
+                >
+                  <b>{item}</b>%
+                </Typography>
+                <div className={percentStyles[idx]} />
+              </div>
+          )}
+        })
       }
-
     </div>
   )
 }
