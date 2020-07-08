@@ -82,6 +82,11 @@ const Chart = (props) => {
     }
   } 
 
+  const wrapperName = (name) => {
+    var size = 50
+    return (name.length > size) ? name.slice(0, size) + ' ...' : name
+  }
+
   const handleClick = () => {
     setState({allTypes: true})
   }
@@ -97,14 +102,13 @@ const Chart = (props) => {
               <Card className={classes.root} onMouseEnter={null} onMouseLeave={() => {}} >
                 <CardContent className={classes.content}>
                   <Grid container direction='row' alignItems='center' spacing={2}>
-                    <Grid item xs={3} container direction='row' justify='space-between' style={{height: '80px'}}>
+                    <Grid item xs={4} container direction='row' justify='space-between' style={{height: '80px'}}>
                       <Typography 
-                        noWrap
                         component='h5'
                         variant='h5'
                         align='left'
                         className={classes.title}>
-                        {item.name}
+                        { wrapperName(item.name) }
                       </Typography>
                       <Divider orientation='vertical' flexItem  />
                     </Grid>
