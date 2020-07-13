@@ -20,7 +20,7 @@ const Whoops = () => {
 
   let history = useHistory()
   const handleReturnClick = () => {
-    history.push('/main')
+    history.push('/')
   }
 
   const handleAboutClick = () => {
