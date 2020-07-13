@@ -23,6 +23,10 @@ const Whoops = () => {
     history.push('/main')
   }
 
+  const handleAboutClick = () => {
+    history.push('/about')
+  }
+
   return(
     <Grid container direction='column' align='left' justify='center' className={classes.root}>
       <Grid item xs={12}>
@@ -37,6 +41,13 @@ const Whoops = () => {
         className={classes.wrapper}
       >
         Назад
+      </Button>
+      <Button 
+        color='default'
+        onClick={handleAboutClick}
+        className={classes.wrapper}
+      >
+        about
       </Button>
       </Grid>
     </Grid>
