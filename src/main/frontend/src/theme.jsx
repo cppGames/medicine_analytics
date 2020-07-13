@@ -33,6 +33,8 @@ const theme = createMuiTheme({
     blue: '#007ce0',
     navy: '#004175',
     grey: '#778077',
+    gradient: '#4ebfd1',
+    // 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'
   },
 })
 

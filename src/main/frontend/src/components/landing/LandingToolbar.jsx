@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LandingToolbar = () => {
   const classes = useStyles()
-  let history = useHistory()
+  const history = useHistory()
 
   const handleClick = (param) => {
     history.push(param)
