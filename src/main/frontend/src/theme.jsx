@@ -6,6 +6,12 @@ import { createMuiTheme }  from '@material-ui/core/styles'
 
 const theme = createMuiTheme({
   spacing: 8,
+  page: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+  },
   palette: {
     background: {
       default: '#FFFFFF'
