@@ -1,14 +1,18 @@
 import React from 'react'
-import { useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import {
   Typography
 } from '@material-ui/core'
 
+const useStyles = makeStyles(theme => ({
+  page:  theme.page,
+}))
+
 const Landing = () => {
-  const theme = useTheme();
+  const classes = useStyles()
 
   return (
-    <div style={ theme.page }>
+    <div className={ classes.page }>
       <Typography align='left' variant='h1' component='h1'>
         Landing page
       </Typography>
