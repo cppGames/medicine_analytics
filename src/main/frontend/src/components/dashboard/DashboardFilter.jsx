@@ -25,9 +25,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     paddingBottom: theme.spacing(2)
   },
-  wrapper: {
-    position: 'relative',
-  },
   buttonProgress: {
     color: theme.colors.grey,
     position: 'absolute',
@@ -46,7 +43,7 @@ const DashboardFilter = (props) => {
     setSelected,
     loadingFilters,
     loadingCharts,
-    fintCharts
+    findCharts
   } = props
 
   return (
@@ -84,13 +81,7 @@ const DashboardFilter = (props) => {
               }
             </Grid>
             <Grid item align='right'>
-              <SubmitButton 
-                // variant='outlined'
-                // color='default'
-                disabled={ loadingCharts }
-                onClick={ () => ( fintCharts() ) }
-                // className={ classes.wrapper }
-              >
+              <SubmitButton  disabled={ loadingCharts } onClick={ () => ( findCharts() ) }>
                 Перейти к типам лечения
                 { 
                   loadingCharts &&
@@ -108,7 +99,7 @@ DashboardFilter.propTypes = {
   filters: PropTypes.array.isRequired,
   selected: PropTypes.object.isRequired,
   setSelected: PropTypes.func.isRequired,
-  fintCharts: PropTypes.func.isRequired,
+  findCharts: PropTypes.func.isRequired,
   loadingFilters: PropTypes.bool,
   loadingCharts: PropTypes.bool,
 }
@@ -117,7 +108,7 @@ DashboardFilter.defaultProps = {
   filters: [],
   selected: {},
   setSelected: () => {},
-  fintCharts: () => {},
+  findCharts: () => {},
   loadingFilters: false,
   loadingCharts: false,
 }

@@ -45,7 +45,7 @@ const Dashboard = () => {
   const [selected, setSelected] = useState({})
   const [loadingCharts, setLoadingCharts] = useState(false)
   const [types, setTypes] = useState({})
-  const fintCharts = () => {
+  const findCharts = () => {
     if (Object.keys(selected).length !== 0) {
       clean(selected)
       setLoadingCharts(true)
@@ -76,7 +76,7 @@ const Dashboard = () => {
           setSelected={ setSelected }
           loadingFilters={ loadingFilters }
           loadingCharts={ loadingCharts }
-          fintCharts={ fintCharts }
+          findCharts={ findCharts }
         />
       </Grid>
       { 

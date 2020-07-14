@@ -20,11 +20,20 @@ const theme = createMuiTheme({
     minHeight: '100vh',
   },
   palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#0195ac',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
     background: {
       default: '#FFFFFF'
-    },
-    primary: {
-      main: '#363537',
     },
   },
   colors: {
