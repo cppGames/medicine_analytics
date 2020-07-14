@@ -14,16 +14,16 @@ import LandingToolbar from './LandingToolbar'
 const useStyles = makeStyles(theme => ({
   root: theme.page,
   card: Object.assign(theme.cardMaterial, {
-    minWidth: '1280px'
+    width: '1024px'
   }),
   content: {
-    padding: theme.spacing(4)
+    padding: theme.spacing(2)
   },
   img: {
     margin: 'auto',
     display: 'block',
-    maxWidth: '472px',
-    maxHeight: '472px',
+    maxWidth: '416px',
+    maxHeight: '416px',
   },
   typography: {
     color: '#564857'
@@ -64,11 +64,11 @@ const Landing = () => {
       <Card className={classes.card}>
         <CardContent className={classes.content}>
           <Grid container direction='column'>
-            <Grid item>
+            {/* <Grid item>
               <LandingToolbar handleClick={ handleClick }/>
-            </Grid>
+            </Grid> */}
             <Grid container item direction='row'>
-              <Grid item container xs={8} alignItems='center' justify='center' direction='column' style={{maxHeight: '472px'}} spacing={2}>
+              <Grid item container xs={7} alignItems='center' justify='center' direction='column' style={{maxHeight: '472px', paddingLeft: '16px'}} spacing={2}>
                 <Grid item>
                   <Typography align='left' variant='h3' classes={{ root: classes.typography }}>
                     Аналитическая система рекомендаций
@@ -86,7 +86,7 @@ const Landing = () => {
                 </Grid>
                 
               </Grid>
-              <Grid item xs={4}>
+              <Grid item xs={5}>
                 <img className={classes.img} alt='complex' src={LandingImage} />
               </Grid>
             </Grid>
