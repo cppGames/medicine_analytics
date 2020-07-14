@@ -12,7 +12,7 @@ import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 
-import MainParam from './MainParam'
+import DashboardFilterParam from './DashboardFilterParam'
 import { get_data } from '../../util/data'
 
 
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Main = (props) => {
+const DashboardFilter = (props) => {
   const classes = useStyles()
 
   const [prodData, setProdData] = useState([])
@@ -85,7 +85,7 @@ const Main = (props) => {
                     </Typography>
                     {
                       param.params.map((item, idy) => (
-                        <MainParam key={idy} id={item.id} row={item} callbackSelect={setFilters} val={filters}/>
+                        <DashboardFilterParam key={idy} id={item.id} row={item} callbackSelect={setFilters} val={filters}/>
                       ))
                     }
                 </Grid>
@@ -113,12 +113,12 @@ const Main = (props) => {
   )
 }
 
-Main.propTypes = {
+DashboardFilter.propTypes = {
   setFilters: PropTypes.func.isRequired
 }
 
-Main.defaultProps = {
+DashboardFilter.defaultProps = {
   setFilters: () => ({})
 }
 
-export default Main
+export default DashboardFilter

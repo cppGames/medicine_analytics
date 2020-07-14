@@ -4,7 +4,7 @@ import './App.css'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from './theme'
-import Dashboard from './components/Dashboard'
+import Dashboard from './components/dashboard/Dashboard'
 import Whoops from './components/whoops/Whoops'
 import Landing from './components/landing/Landing'
 import {

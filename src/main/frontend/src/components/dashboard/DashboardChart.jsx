@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import ChartProgressBar from './ChartProgressBar'
+import DashboardChartBar from './DashboardChartBar'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import {
@@ -49,7 +49,7 @@ const addDecimalPlaces = (number) => {
   return number.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')
 }
 
-const Chart = (props) => {
+const DashboardChart = (props) => {
   const classes = useStyles()
   const { types } = props
 
@@ -113,7 +113,7 @@ const Chart = (props) => {
                       <Divider orientation='vertical' flexItem  />
                     </Grid>
                     <Grid item xs={8} >
-                      <ChartProgressBar
+                      <DashboardChartBar
                         bad={ parseFloat(item.bad) }
                         normal={ parseFloat(item.normal) }
                         good={ parseFloat(item.good) }
@@ -150,12 +150,12 @@ const Chart = (props) => {
 }
 
 
-Chart.propTypes = {
+DashboardChart.propTypes = {
   types: PropTypes.array.isRequired,
 }
 
-Chart.defaultProps = {
+DashboardChart.defaultProps = {
   types: [],
 }
 
-export default Chart
+export default DashboardChart

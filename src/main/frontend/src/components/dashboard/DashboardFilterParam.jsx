@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const MainParam2 = (props) => {
+const DashboardFilter = (props) => {
  
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -70,15 +70,15 @@ const MainParam2 = (props) => {
   )
 }
 
-MainParam2.propTypes = {
+DashboardFilter.propTypes = {
   id: PropTypes.string.isRequired,
   row: PropTypes.object.isRequired,
   callbackSelect: PropTypes.func.isRequired,
   val: PropTypes.object.isRequired
 };
 
-MainParam2.defaultProps = {
+DashboardFilter.defaultProps = {
   row: {}
 };
 
-export default MainParam2
+export default DashboardFilter

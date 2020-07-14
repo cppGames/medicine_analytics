@@ -4,13 +4,12 @@ import {
 } from '@material-ui/core'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/styles'
-import { get_type } from '../util/data'
-import { get_new_type } from '../util/data'
-import { clean } from '../util/serverRequest'
+import { get_type } from '../../util/data'
+import { get_new_type } from '../../util/data'
+import { clean } from '../../util/serverRequest'
 
-// import Type from './type/Type'
-import Chart from './chart/Chart'
-import Main from './main/main'
+import DashboardChart from './DashboardChart'
+import DashboardFilter from './DashboardFilter'
 
 const useStyles = makeStyles(theme => ({
   root: { 
@@ -56,7 +55,7 @@ const Dashboard = () => {
   return(
     <Grid container direction='column' align='center' justify='center' className={classes.root}>
       <Grid item xs={12} className={classes.mainFrame}>
-        <Main setFilters={ setFilters }/>
+        <DashboardFilter setFilters={ setFilters }/>
       </Grid>
       {/* { 
         Object.keys(types).length !== 0 &&
@@ -67,7 +66,7 @@ const Dashboard = () => {
       { 
         Object.keys(newTypes).length !== 0 &&
         <Grid item xs={12} className={classes.paramFrame}>
-          <Chart types={newTypes}/>
+          <DashboardChart types={newTypes}/>
         </Grid>
       }
     </Grid>
