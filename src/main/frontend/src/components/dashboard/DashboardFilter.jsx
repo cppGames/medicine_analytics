@@ -2,18 +2,16 @@ import React from 'react'
 import {
   Grid,
   Card,
-  Button,
   CardContent,
   Typography,
   CircularProgress 
 } from '@material-ui/core'
-
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
+
 import LoadingBar from '../common/LoadingBar'
 import SubmitButton from '../common/SubmitButton'
 import DashboardFilterParam from './DashboardFilterParam'
-import { get_data } from '../../util/data'
 
 
 const useStyles = makeStyles(theme => ({

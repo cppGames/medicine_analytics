@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { 
-  Grid
-} from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/styles'
 import { get_type } from '../../util/data'
