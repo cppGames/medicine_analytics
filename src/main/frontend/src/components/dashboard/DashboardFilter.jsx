@@ -4,7 +4,8 @@ import {
   Card,
   CardContent,
   Typography,
-  CircularProgress 
+  CircularProgress,
+  Slide
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
@@ -61,21 +62,23 @@ const DashboardFilter = (props) => {
                   </Grid>
                 ) : (
                   filters.map((param, idx) => (
-                  <Grid item xs={6} key={idx}>
-                    <Typography align='left' variant='h5'>
-                      { param.name }
-                    </Typography>
-                    {
-                      param.params.map((item, idy) => (
-                        <DashboardFilterParam
-                          key={idy} id={item.id} row={item}
-                          callbackSelect={setSelected}
-                          val={selected}
-                        />
-                      ))
-                    }
-                </Grid>
-                )))
+                    <Slide key={idx} in={!loadingFilters} direction='up' mountOnEnter unmountOnExit>
+                      <Grid item xs={6}>
+                        <Typography align='left' variant='h5'>
+                          { param.name }
+                        </Typography>
+                        {
+                          param.params.map((item, idy) => (
+                            <DashboardFilterParam
+                              key={idy} id={item.id} row={item}
+                              callbackSelect={setSelected}
+                              val={selected}
+                            />
+                          ))
+                        }
+                      </Grid>
+                    </Slide>
+                  )))
               }
             </Grid>
             <Grid item align='right'>
