@@ -7,7 +7,6 @@ import theme from './theme'
 import Dashboard from './components/Dashboard'
 import Whoops from './components/whoops/Whoops'
 import Landing from './components/landing/Landing'
-
 import {
   CSSTransition,
   TransitionGroup,

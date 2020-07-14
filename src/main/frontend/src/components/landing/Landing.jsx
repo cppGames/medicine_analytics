@@ -7,7 +7,7 @@ import {
   Typography ,
   CardContent,
 } from '@material-ui/core'
-
+import { useHistory  } from 'react-router-dom'
 import LandingImage from '../../../public/landingImage.jpg'
 import LandingToolbar from './LandingToolbar'
 
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     height: 48,
     width: 250,
     padding: '0 30px',
-    boxShadow: '0 3px 5px 2px rgba(43, 172, 146, 0.3)',
+    boxShadow: '0 3px 5px 2px rgba(185, 183, 204, 0.3)',
     '&:hover': {
       backgroundColor: '#0195ac',
       borderColor: '#0062cc',
@@ -47,7 +47,12 @@ const useStyles = makeStyles(theme => ({
 
 const Landing = () => {
   const classes = useStyles()
+  const history = useHistory()
 
+  const handleClick = (param) => {
+    history.push(param)
+  }
+  
   return (
     <Grid
       container
@@ -60,7 +65,7 @@ const Landing = () => {
         <CardContent className={classes.content}>
           <Grid container direction='column'>
             <Grid item>
-              <LandingToolbar />
+              <LandingToolbar handleClick={ handleClick }/>
             </Grid>
             <Grid container item direction='row'>
               <Grid item container xs={8} alignItems='center' justify='center' direction='column' style={{maxHeight: '472px'}} spacing={2}>
@@ -69,8 +74,15 @@ const Landing = () => {
                     Аналитическая система рекомендаций
                   </Typography>
                   </Grid>
-                  <Grid item container alignItems='flex-end'>
-                  <Button size='large' classes={{ root: classes.btn }} onClick={ () => {} }>Get it</Button>
+                  <Grid item container>
+                  <Button
+                    classes={{ 
+                      root: classes.btn
+                    }} 
+                    onClick={ () => handleClick('/main') }
+                  >
+                    Подробнее
+                  </Button>
                 </Grid>
                 
               </Grid>

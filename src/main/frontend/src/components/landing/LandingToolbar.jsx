@@ -3,7 +3,7 @@ import {
   Button,
   Toolbar,
 } from '@material-ui/core'
-import { useHistory  } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
@@ -15,22 +15,25 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const LandingToolbar = () => {
+const LandingToolbar = (prop) => {
   const classes = useStyles()
-  const history = useHistory()
-
-  const handleClick = (param) => {
-    history.push(param)
-  }
+  const { handleClick } = prop
 
   return (
     <Toolbar className={ classes.root }>
       <div className={ classes.toolbarButtons } />
-      <Button color='inherit' onClick={ () => handleClick('/main') }>Dashboard</Button>
-      <Button color='inherit' onClick={ () => handleClick('/about') }>About</Button>
-      <Button color='inherit' onClick={ () => handleClick('/contacts') }>Contacts</Button>
+      <Button color='inherit' onClick={ () => handleClick('/about') }>О нас</Button>
+      <Button color='inherit' onClick={ () => handleClick('/contacts') }>Контакты</Button>
     </Toolbar>
   )
+}
+
+LandingToolbar.propTypes = {
+  handleClick: PropTypes.func.isRequired
+}
+
+LandingToolbar.defaultProps = {
+  handleClick: () => {}
 }
 
 export default LandingToolbar
