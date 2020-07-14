@@ -13,13 +13,11 @@ import DashboardFilter from './DashboardFilter'
 
 const useStyles = makeStyles(theme => ({
   root: { 
+    ... theme.page,
     padding: theme.spacing(10),
   },
   mainFrame: {
     paddingBottom: theme.spacing(2)
-  },
-  paramFrame : {
-    // background: theme.colors.blue
   }
 }))
 
@@ -69,10 +67,9 @@ const Dashboard = () => {
     <Grid
       container
       direction='column'
-      align='center'
-      justify='center'
+      justify='flex-start'
       className={classes.root}>
-      <Grid item xs={12} className={classes.mainFrame}>
+      <Grid item className={classes.mainFrame}>
         <DashboardFilter
           filters={ filters }
           selected={ selected }
@@ -84,7 +81,7 @@ const Dashboard = () => {
       </Grid>
       { 
         Object.keys(types).length !== 0 &&
-        <Grid item xs={12} className={classes.paramFrame}>
+        <Grid item>
           <DashboardChart types={types}/>
         </Grid>
       }
