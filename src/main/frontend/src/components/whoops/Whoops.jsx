@@ -20,7 +20,11 @@ const Whoops = () => {
 
   let history = useHistory()
   const handleReturnClick = () => {
-    history.push('/main')
+    history.push('/')
+  }
+
+  const handleAboutClick = () => {
+    history.push('/about')
   }
 
   return(
@@ -37,6 +41,13 @@ const Whoops = () => {
         className={classes.wrapper}
       >
         Назад
+      </Button>
+      <Button 
+        color='default'
+        onClick={handleAboutClick}
+        className={classes.wrapper}
+      >
+        about
       </Button>
       </Grid>
     </Grid>

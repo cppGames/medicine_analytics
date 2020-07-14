@@ -29,6 +29,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
+      },
+      {
+        // npm install file-loader --save-dev
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          { loader: 'file-loader' },
+        ],
       }
     ]
   },

@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Landing = () => {
+const Dashboard = () => {
   const classes = useStyles()
 
   const [filters, setFilters] = useState({})
@@ -74,4 +74,4 @@ const Landing = () => {
   )
 }
 
-export default Landing
+export default Dashboard
