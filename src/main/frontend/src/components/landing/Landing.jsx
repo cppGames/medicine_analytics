@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '416px',
   },
   typography: {
-    color: '#564857'
+    color: '#908a90'
   },
   btn: {
     background: theme.colors.gradient,
