@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const ChartProgressBar = (props) => {
+const DashboardChartBar = (props) => {
   const { bad, normal, good, hover } = props
   const classes = useStyles(props)
   const filterStyle = [classes.badFilterStyle, classes.normalFilterStyle, classes.goodFilterStyle]
@@ -94,7 +94,7 @@ const ChartProgressBar = (props) => {
   )
 }
 
-ChartProgressBar.propTypes = {
+DashboardChartBar.propTypes = {
   status: PropTypes.string.isRequired,
   bad: PropTypes.number.isRequired,
   normal: PropTypes.number.isRequired,
@@ -102,7 +102,7 @@ ChartProgressBar.propTypes = {
   hover: PropTypes.bool
 }
 
-ChartProgressBar.defaultProps = {
+DashboardChartBar.defaultProps = {
   status: '',
   bad: 0,
   normal: 0,
@@ -110,4 +110,4 @@ ChartProgressBar.defaultProps = {
   hover: false
 }
 
-export default ChartProgressBar
+export default DashboardChartBar
