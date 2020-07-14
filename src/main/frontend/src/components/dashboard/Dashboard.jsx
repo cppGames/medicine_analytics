@@ -47,7 +47,6 @@ const Dashboard = () => {
   const [selected, setSelected] = useState({})
   const [loadingCharts, setLoadingCharts] = useState(false)
   const [types, setTypes] = useState({})
-  // useEffect(() => {
   const fintCharts = () => {
     if (Object.keys(selected).length !== 0) {
       clean(selected)
