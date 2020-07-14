@@ -11,6 +11,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import LoadingBar from '../common/LoadingBar'
+import SubmitButton from '../common/SubmitButton'
 import DashboardFilterParam from './DashboardFilterParam'
 import { get_data } from '../../util/data'
 
@@ -83,19 +84,19 @@ const DashboardFilter = (props) => {
               }
             </Grid>
             <Grid item align='right'>
-              <Button 
-                variant='outlined'
-                color='default'
+              <SubmitButton 
+                // variant='outlined'
+                // color='default'
                 disabled={ loadingCharts }
                 onClick={ () => ( fintCharts() ) }
-                className={ classes.wrapper }
+                // className={ classes.wrapper }
               >
                 Перейти к типам лечения
                 { 
                   loadingCharts &&
                   <CircularProgress size={24} className={classes.buttonProgress} />
                 }
-              </Button>
+              </SubmitButton>
             </Grid>
           </Grid>
         </CardContent>
