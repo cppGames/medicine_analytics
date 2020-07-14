@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
   Grid,
   Card,
@@ -7,11 +7,10 @@ import {
   Typography,
   CircularProgress 
 } from '@material-ui/core'
-import axios from 'axios'
 
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-
+import LoadingBar from '../common/LoadingBar'
 import DashboardFilterParam from './DashboardFilterParam'
 import { get_data } from '../../util/data'
 
@@ -40,29 +39,14 @@ const useStyles = makeStyles(theme => ({
 
 const DashboardFilter = (props) => {
   const classes = useStyles()
-
-  const [prodData, setProdData] = useState([])
-  useEffect(() => {
-    axios
-      .get('http://localhost:9000/v1/api/patient-card/filter-dashboard')
-      .then(response => {
-        console.log(`get dashboard filtrs`)
-        setProdData(response.data)
-      })
-      .catch(error => { 
-        console.log(`failed to get error dashboard filters: ${error}`)
-      })
-  }, [])
-
-  const [filters, setFilters] = useState({})
-  const [loading, setLoading] = useState(false)
-
-  const handleClick = (event) => {
-    console.log(filters)
-    // setLoading(true)
-    // setLoading(false)
-    props.setFilters(filters)
-  }
+  const {
+    filters,
+    selected,
+    setSelected,
+    loadingFilters,
+    loadingCharts,
+    fintCharts
+  } = props
 
   return (
     <Card className={classes.root}>
@@ -72,40 +56,46 @@ const DashboardFilter = (props) => {
               <Typography align='left' variant='h3' component='h3'>
                 Карточка пациента
               </Typography>
-              <Typography align='left' variant='subtitle1'>
-                Эффективность лечения зависит отследующих параметров
-              </Typography>
             </Grid>
             <Grid item container direction='row' spacing={2}> 
-              {
-                prodData.map((param, idx) => (
+              { loadingFilters 
+                ? (
+                  <Grid item container alignItems='center' justify='center'>
+                    <LoadingBar />
+                  </Grid>
+                ) : (
+                  filters.map((param, idx) => (
                   <Grid item xs={6} key={idx}>
                     <Typography align='left' variant='h5'>
                       { param.name }
                     </Typography>
                     {
                       param.params.map((item, idy) => (
-                        <DashboardFilterParam key={idy} id={item.id} row={item} callbackSelect={setFilters} val={filters}/>
+                        <DashboardFilterParam
+                          key={idy} id={item.id} row={item}
+                          callbackSelect={setSelected}
+                          val={selected}
+                        />
                       ))
                     }
                 </Grid>
-                ))
+                )))
               }
             </Grid>
             <Grid item align='right'>
-              
-                <Button 
-                  variant='outlined'
-                  color='default'
-                  disabled={loading}
-                  onClick={handleClick}
-                  className={classes.wrapper}
-                >
-                  Перейти к типам лечения
-                  { loading && <CircularProgress size={24} className={classes.buttonProgress} /> }
-                </Button>
-                
-              
+              <Button 
+                variant='outlined'
+                color='default'
+                disabled={ loadingCharts }
+                onClick={ () => ( fintCharts() ) }
+                className={ classes.wrapper }
+              >
+                Перейти к типам лечения
+                { 
+                  loadingCharts &&
+                  <CircularProgress size={24} className={classes.buttonProgress} />
+                }
+              </Button>
             </Grid>
           </Grid>
         </CardContent>
@@ -114,11 +104,21 @@ const DashboardFilter = (props) => {
 }
 
 DashboardFilter.propTypes = {
-  setFilters: PropTypes.func.isRequired
+  filters: PropTypes.array.isRequired,
+  selected: PropTypes.object.isRequired,
+  setSelected: PropTypes.func.isRequired,
+  fintCharts: PropTypes.func.isRequired,
+  loadingFilters: PropTypes.bool,
+  loadingCharts: PropTypes.bool,
 }
 
 DashboardFilter.defaultProps = {
-  setFilters: () => ({})
+  filters: [],
+  selected: {},
+  setSelected: () => {},
+  fintCharts: () => {},
+  loadingFilters: false,
+  loadingCharts: false,
 }
 
 export default DashboardFilter

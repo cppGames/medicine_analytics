@@ -26,47 +26,67 @@ const useStyles = makeStyles(theme => ({
 const Dashboard = () => {
   const classes = useStyles()
 
-  const [filters, setFilters] = useState({})
-  // const [types, setTypes] = useState({})
-  // useEffect(() => {
-  //   if (Object.keys(filters).length !== 0) {    
-  //     setTypes(get_type())
-  //   }
-  // }, [filters])
-
-  const [newTypes, setNewTypes] = useState({})
+  const [loadingFilters, setLoadingFilters] = useState(false)
+  const [filters, setFilters] = useState([])
   useEffect(() => {
-    if (Object.keys(filters).length !== 0) {
-      clean(filters)
-      axios
-      .post('http://localhost:9000/v1/api/patient-card/', filters)
+    setLoadingFilters(true)
+    axios
+      .get('http://localhost:9000/v1/api/patient-card/filter-dashboard')
       .then(response => {
-        console.log(`get types by filters`)
-        setNewTypes(response.data)
+        console.info(`get all filters`)
+        setFilters(response.data)
+        setLoadingFilters(false)
+        console.log(`now flag loadingFilters is ${ loadingFilters }`)
+        // setFilters(get_type())
       })
       .catch(error => { 
-        console.log(`failed to get types by filters: ${error}`)
+        console.error(`failed to get filters: ${error}`)
       })
-      // setNewTypes(get_new_type())
-      // console.log(newTypes)
+  }, [])
+  
+  const [selected, setSelected] = useState({})
+  const [loadingCharts, setLoadingCharts] = useState(false)
+  const [types, setTypes] = useState({})
+  // useEffect(() => {
+  const fintCharts = () => {
+    if (Object.keys(selected).length !== 0) {
+      clean(selected)
+      setLoadingCharts(true)
+      axios
+      .post('http://localhost:9000/v1/api/patient-card/', selected)
+      .then(response => {
+        console.log(`get types by selected filters`)
+        setTypes(response.data)
+        setLoadingCharts(false)
+      })
+      .catch(error => { 
+        console.log(`failed to get types by selected filters: ${error}`)
+      })
+      // setTypes(get_new_type())
     }
-  }, [filters])
+  }
 
   return(
-    <Grid container direction='column' align='center' justify='center' className={classes.root}>
+    <Grid
+      container
+      direction='column'
+      align='center'
+      justify='center'
+      className={classes.root}>
       <Grid item xs={12} className={classes.mainFrame}>
-        <DashboardFilter setFilters={ setFilters }/>
+        <DashboardFilter
+          filters={ filters }
+          selected={ selected }
+          setSelected={ setSelected }
+          loadingFilters={ loadingFilters }
+          loadingCharts={ loadingCharts }
+          fintCharts={ fintCharts }
+        />
       </Grid>
-      {/* { 
+      { 
         Object.keys(types).length !== 0 &&
         <Grid item xs={12} className={classes.paramFrame}>
-          <Type types={types}/>
-        </Grid>
-      } */}
-      { 
-        Object.keys(newTypes).length !== 0 &&
-        <Grid item xs={12} className={classes.paramFrame}>
-          <DashboardChart types={newTypes}/>
+          <DashboardChart types={types}/>
         </Grid>
       }
     </Grid>
