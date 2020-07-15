@@ -29,14 +29,20 @@ const Dashboard = () => {
     axios
       .get('http://localhost:9000/v1/api/patient-card/filter-dashboard')
       .then(response => {
-        console.info(`get all filters`)
+        console.info(
+          '%c get filters from server | response status: %s',
+          'color: green; font-weight: bold;', response.status
+        )
         setFilters(response.data)
         setLoadingFilters(false)
-        console.log(`now flag loadingFilters is ${ loadingFilters }`)
         // setFilters(get_type())
       })
       .catch(error => { 
-        console.error(`failed to get filters: ${error}`)
+        console.error(
+          '%c failed to get filters | error: %s',
+          'color: red; font-weight: bold;',
+          error
+          )
       })
   }, [])
   
@@ -50,12 +56,18 @@ const Dashboard = () => {
       axios
       .post('http://localhost:9000/v1/api/patient-card/', selected)
       .then(response => {
-        console.log(`get types by selected filters`)
+        console.log(
+          '%c get charts by selected filters | response status: %s',
+          'color: green; font-weight: bold;', response.status
+        )
         setTypes(response.data)
         setLoadingCharts(false)
       })
       .catch(error => { 
-        console.log(`failed to get types by selected filters: ${error}`)
+        console.error(
+          '%c failed to get charts by selected filters | error: %s',
+          'color: red; font-weight: bold;',
+        )
       })
       // setTypes(get_new_type())
     }
