@@ -7,12 +7,8 @@ export function clean(obj) {
   }
 }
 
-
-
-
 const handleClick = (event) => {
   // const timer = React.useRef()
-  console.log(filters)
   setLoading(true)
   timer.current = setTimeout(() => {
     setLoading(false)

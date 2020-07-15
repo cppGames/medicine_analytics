@@ -1,7 +1,9 @@
 import React from 'react'
 import {
+  Box,
   Grid,
   Card,
+  CardMedia,
   CardContent,
   Typography,
   CircularProgress,
@@ -22,7 +24,8 @@ const useStyles = makeStyles(theme => ({
     boxShadow: '6px 6px 14px 0 rgba(0, 0, 0, 0.2), -8px -8px 18px 0 rgba(255, 255, 255, 0.55)',
   },
   title: {
-    paddingBottom: theme.spacing(2)
+    padding: theme.spacing(1),
+    color: 'white'
   },
   buttonProgress: {
     color: theme.colors.grey,
@@ -31,6 +34,10 @@ const useStyles = makeStyles(theme => ({
     left: '50%',
     marginTop: -12,
     marginLeft: -12,
+  },
+  media: {
+    height: 72,
+    background: 'linear-gradient(25deg, rgba(78,191,209,1) 0%, rgba(0,136,157,1) 75%, rgba(78,191,209,1) 100%)'
   },
 }))
 
@@ -47,13 +54,18 @@ const DashboardFilter = (props) => {
 
   return (
     <Card className={classes.root}>
+        <CardMedia
+          className={classes.media}
+          title="gradient image"
+        >
+          <Typography align='left' variant='h3' component='h3'>
+            <Box fontWeight="fontWeightLight" p={1} className={ classes.title }>
+                Карточка пациента
+                </Box>
+              </Typography>
+          </CardMedia>
         <CardContent>
           <Grid container direction='column'>
-            <Grid item className={classes.title}>
-              <Typography align='left' variant='h3' component='h3'>
-                Карточка пациента
-              </Typography>
-            </Grid>
             <Grid item container direction='row' spacing={2}> 
               { loadingFilters 
                 ? (
