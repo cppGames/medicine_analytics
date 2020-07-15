@@ -3,13 +3,14 @@ import { makeStyles } from '@material-ui/core/styles'
 import {
   Grid,
   Card,
-  Button,
   Typography ,
   CardContent,
 } from '@material-ui/core'
 import { useHistory  } from 'react-router-dom'
 import LandingImage from '../../../public/landingImage.jpg'
-import LandingToolbar from './LandingToolbar'
+import SubmitButton from '../common/SubmitButton'
+// import LandingToolbar from './LandingToolbar'
+
 
 const useStyles = makeStyles(theme => ({
   root: theme.page,
@@ -28,21 +29,6 @@ const useStyles = makeStyles(theme => ({
   typography: {
     color: '#908a90'
   },
-  btn: {
-    background: theme.colors.gradient,
-    borderRadius: 3,
-    border: 0,
-    color: 'white',
-    height: 48,
-    width: 250,
-    padding: '0 30px',
-    boxShadow: '0 3px 5px 2px rgba(185, 183, 204, 0.3)',
-    '&:hover': {
-      backgroundColor: '#0195ac',
-      borderColor: '#0062cc',
-      boxShadow: 'none',
-    }
-  }
 }))
 
 const Landing = () => {
@@ -75,14 +61,9 @@ const Landing = () => {
                   </Typography>
                   </Grid>
                   <Grid item container>
-                  <Button
-                    classes={{ 
-                      root: classes.btn
-                    }} 
-                    onClick={ () => handleClick('/main') }
-                  >
+                  <SubmitButton onClick={ () => handleClick('/main') } >
                     Подробнее
-                  </Button>
+                  </SubmitButton>
                 </Grid>
                 
               </Grid>

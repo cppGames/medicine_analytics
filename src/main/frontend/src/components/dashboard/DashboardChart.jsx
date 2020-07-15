@@ -71,8 +71,6 @@ const DashboardChart = (props) => {
     if (state.allTypes) { 
       // return types.sort((a, b) => parseInt(b.probability[2]) - parseInt(a.probability[2]))
       const [pass, fail] = partition(types, (e) => e.count > 1000);
-      console.log(pass)
-      console.log(fail)
       return (
         pass.sort((a, b) => parseInt(b.good) - parseInt(a.good))
           .concat(fail.sort((a, b) => parseInt(b.good) - parseInt(a.good))))

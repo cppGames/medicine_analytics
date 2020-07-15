@@ -1,16 +1,14 @@
 import React from 'react'
-
 import {
   Select,
   FormControl,
   InputLabel,
   MenuItem
 } from '@material-ui/core'
-
 import PropTypes from 'prop-types'
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
+const ITEM_HEIGHT = 48
+const ITEM_PADDING_TOP = 8
 const MenuProps = {
   PaperProps: {
     style: {
@@ -18,31 +16,33 @@ const MenuProps = {
       width: 250,
     },
   },
-};
+}
 
 const DashboardFilter = (props) => {
+  const {id, row, callbackSelect, val} = props
+
   const handleChange = (event) => {
-    const { name, value } = event.target;
-    props.callbackSelect(prevState => ({
+    const { name, value } = event.target
+    callbackSelect(prevState => ({
         ...prevState,
-        [props.id]: value
+        [id]: value
     }))
   }
 
   return (
     <FormControl fullWidth>
-      <InputLabel id="demo-simple-select-label">{props.row.name}</InputLabel>
+      <InputLabel id='select-label-field'>{ row.name }</InputLabel>
       <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={ props.val[props.id] || ''}
-        onChange={handleChange}
-        MenuProps={MenuProps}
+        labelId='select-label-field'
+        id='demo-simple-select'
+        value={ val[id] || '' }
+        onChange={ handleChange }
+        MenuProps={ MenuProps }
       >
-          <MenuItem value="">
+          <MenuItem value=''>
             <em>Очистить поле</em>
           </MenuItem>
-          {props.row.items.map((item) => (
+          { row.items.map((item) => (
             <MenuItem key={item} value={item}>
               {item}
             </MenuItem>
@@ -57,10 +57,10 @@ DashboardFilter.propTypes = {
   row: PropTypes.object.isRequired,
   callbackSelect: PropTypes.func.isRequired,
   val: PropTypes.object.isRequired
-};
+}
 
 DashboardFilter.defaultProps = {
   row: {}
-};
+}
 
 export default DashboardFilter

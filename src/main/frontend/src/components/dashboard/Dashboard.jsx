@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { 
-  Grid
-} from '@material-ui/core'
+import Grid from '@material-ui/core/Grid'
 import axios from 'axios'
 import { makeStyles } from '@material-ui/styles'
 import { get_type } from '../../util/data'
@@ -13,13 +11,11 @@ import DashboardFilter from './DashboardFilter'
 
 const useStyles = makeStyles(theme => ({
   root: { 
+    ... theme.page,
     padding: theme.spacing(10),
   },
   mainFrame: {
     paddingBottom: theme.spacing(2)
-  },
-  paramFrame : {
-    // background: theme.colors.blue
   }
 }))
 
@@ -33,34 +29,45 @@ const Dashboard = () => {
     axios
       .get('http://localhost:9000/v1/api/patient-card/filter-dashboard')
       .then(response => {
-        console.info(`get all filters`)
+        console.info(
+          '%c get filters from server | response status: %s',
+          'color: green; font-weight: bold;', response.status
+        )
         setFilters(response.data)
         setLoadingFilters(false)
-        console.log(`now flag loadingFilters is ${ loadingFilters }`)
         // setFilters(get_type())
       })
       .catch(error => { 
-        console.error(`failed to get filters: ${error}`)
+        console.error(
+          '%c failed to get filters | error: %s',
+          'color: red; font-weight: bold;',
+          error
+          )
       })
   }, [])
   
   const [selected, setSelected] = useState({})
   const [loadingCharts, setLoadingCharts] = useState(false)
   const [types, setTypes] = useState({})
-  // useEffect(() => {
-  const fintCharts = () => {
+  const findCharts = () => {
     if (Object.keys(selected).length !== 0) {
       clean(selected)
       setLoadingCharts(true)
       axios
       .post('http://localhost:9000/v1/api/patient-card/', selected)
       .then(response => {
-        console.log(`get types by selected filters`)
+        console.log(
+          '%c get charts by selected filters | response status: %s',
+          'color: green; font-weight: bold;', response.status
+        )
         setTypes(response.data)
         setLoadingCharts(false)
       })
       .catch(error => { 
-        console.log(`failed to get types by selected filters: ${error}`)
+        console.error(
+          '%c failed to get charts by selected filters | error: %s',
+          'color: red; font-weight: bold;',
+        )
       })
       // setTypes(get_new_type())
     }
@@ -70,22 +77,21 @@ const Dashboard = () => {
     <Grid
       container
       direction='column'
-      align='center'
-      justify='center'
+      justify='flex-start'
       className={classes.root}>
-      <Grid item xs={12} className={classes.mainFrame}>
+      <Grid item className={classes.mainFrame}>
         <DashboardFilter
           filters={ filters }
           selected={ selected }
           setSelected={ setSelected }
           loadingFilters={ loadingFilters }
           loadingCharts={ loadingCharts }
-          fintCharts={ fintCharts }
+          findCharts={ findCharts }
         />
       </Grid>
       { 
         Object.keys(types).length !== 0 &&
-        <Grid item xs={12} className={classes.paramFrame}>
+        <Grid item>
           <DashboardChart types={types}/>
         </Grid>
       }
